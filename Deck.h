@@ -2,15 +2,15 @@
 
 #include <vector>
 
-#include "Card.h"
+#include "BaseCard.h"
 
 class Deck {
 private:
-	std::vector<Card> cards;
+	std::vector<BaseCard> cards;
 
 public:
 	Deck();
 	void shuffle();
-	Card drawCard();
-	int remainingCards();
+	BaseCard drawCard();
+	size_t remainingCards();
 };

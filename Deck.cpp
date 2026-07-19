@@ -8,7 +8,7 @@ Deck::Deck() {
 	for (int s = 0; s < 4; s++) {
 		for (int r = 1; r <= 13; r++) {
 			cards.push_back(
-				Card(static_cast<Suit>(s), static_cast<Rank>(r))
+				BaseCard(static_cast<Suit>(s), static_cast<Rank>(r))
 			);
 		}
 	}
@@ -21,12 +21,12 @@ void Deck::shuffle() {
 	std::shuffle(cards.begin(), cards.end(), generator);
 }
 
-Card Deck::drawCard() {
-	Card drawnCard = cards.back();
+BaseCard Deck::drawCard() {
+	BaseCard drawnCard = cards.back();
 	cards.pop_back();
 	return drawnCard;
 }
 
-int Deck::remainingCards() {
+size_t Deck::remainingCards() {
 	return cards.size();
 }

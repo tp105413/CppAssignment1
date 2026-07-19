@@ -14,12 +14,15 @@ int main() {
 	deck.shuffle();
 
 	Hand hand;
-	for (int c = 0; c < 13; c++) {
+	for (int c = 0; c < 10; c++) {
 		hand.addCard(deck.drawCard());
 	}
 
+	hand.sortHand();
 	hand.displayHand();
 	cout << "\nRemaining Cards: " << deck.remainingCards() << "/52";
+
+	hand.playHand();
 	
 	return 0;
 }

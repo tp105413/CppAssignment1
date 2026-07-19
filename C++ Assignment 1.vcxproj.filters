@@ -18,7 +18,7 @@
     <ClCompile Include="main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Card.cpp">
+    <ClCompile Include="BaseCard.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Deck.cpp">
@@ -27,15 +27,30 @@
     <ClCompile Include="Hand.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="AbilityCard.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Joker.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Card.h">
+    <ClInclude Include="BaseCard.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Deck.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Hand.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Card.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="AbilityCard.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Joker.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

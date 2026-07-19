@@ -1,21 +1,22 @@
 #include <string>
+#include <iostream>
 
-#include "Card.h"
+#include "BaseCard.h"
 
-Card::Card(Suit s, Rank r) {
+BaseCard::BaseCard(Suit s, Rank r) {
 	suit = s;
 	rank = r;
 }
 
-Suit Card::getSuit() const {
+Suit BaseCard::getSuit() const {
 	return suit;
 }
 
-Rank Card::getRank() const {
+Rank BaseCard::getRank() const {
 	return rank;
 }
 
-int Card::getChips() const {
+int BaseCard::getChips() const {
 	if (rank == Rank::Ace || rank == Rank::Jack || rank == Rank::Queen || rank == Rank::King) {
 		return 10;
 	}
@@ -25,7 +26,7 @@ int Card::getChips() const {
 }
 
 // turn rank and suit to string
-std::string Card::displayCard() const {
+std::string BaseCard::displayCard() const {
 	std::string display;
 
 	switch (suit) {
@@ -61,4 +62,8 @@ std::string Card::displayCard() const {
 	}
 
 	return display;
+}
+
+void BaseCard::play() {
+	std::cout << "Played " << displayCard() << "\n";
 }
