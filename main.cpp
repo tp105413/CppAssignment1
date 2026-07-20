@@ -3,6 +3,7 @@
 
 #include "Deck.h"
 #include "Hand.h"
+#include "Score.h"
 
 using namespace std;
 
@@ -23,6 +24,10 @@ int main() {
 	cout << "\nRemaining Cards: " << deck.remainingCards() << "/52";
 
 	hand.playHand();
+
+	Score score;
+	score.calculateTotalChips(hand.getPlayedCards());
+	score.displayScore(hand.getPlayedCards());
 	
 	return 0;
 }

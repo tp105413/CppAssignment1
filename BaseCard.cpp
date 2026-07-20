@@ -65,5 +65,5 @@ std::string BaseCard::displayCard() const {
 }
 
 void BaseCard::play() {
-	std::cout << "Played " << displayCard() << "\n";
+	std::cout << displayCard() << " ";
 }

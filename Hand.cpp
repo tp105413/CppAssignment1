@@ -31,6 +31,8 @@ void Hand::playHand() {
 	int choice;
 	std::vector<int> selectCards;
 
+	playedCards.clear();
+
 	std::cout << "\nPlay 3 cards!\n";
 
 	for (int i = 0;i < 3; i++) {
@@ -60,10 +62,16 @@ void Hand::playHand() {
 		}
 
 		selectCards.push_back(choice - 1);
+		playedCards.push_back(hand[choice - 1]);
 	}
-	std::cout << "\nPlaying cards:\n";
+
+	std::cout << "\nPlaying cards: ";
 
 	for (int index : selectCards) {
 		hand[index].play();
 	}
+}
+
+std::vector<BaseCard> Hand::getPlayedCards() const {
+	return playedCards;
 }
