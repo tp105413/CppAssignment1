@@ -13,4 +13,5 @@ public:
 	void shuffle();
 	BaseCard drawCard();
 	size_t remainingCards();
+	void deckReset();
 };

@@ -70,8 +70,18 @@ void Hand::playHand() {
 	for (int index : selectCards) {
 		hand[index].play();
 	}
+
+	// sort the selected cards descending
+	std::sort(selectCards.rbegin(), selectCards.rend());
+	for (int index : selectCards) {
+		hand.erase(hand.begin() + index);
+	}
 }
 
 std::vector<BaseCard> Hand::getPlayedCards() const {
 	return playedCards;
+}
+
+void Hand::handReset() {
+	hand.clear();
 }

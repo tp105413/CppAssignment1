@@ -30,3 +30,14 @@ BaseCard Deck::drawCard() {
 size_t Deck::remainingCards() {
 	return cards.size();
 }
+
+void Deck::deckReset() {
+	cards.clear();
+	for (int s = 0; s < 4; s++) {
+		for (int r = 1; r <= 13; r++) {
+			cards.push_back(
+				BaseCard(static_cast<Suit>(s), static_cast<Rank>(r))
+			);
+		}
+	}
+}

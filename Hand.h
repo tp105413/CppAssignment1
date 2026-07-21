@@ -15,4 +15,5 @@ public:
 	void displayHand();
 	void playHand();
 	std::vector<BaseCard> getPlayedCards() const;
+	void handReset();
 };
