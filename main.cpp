@@ -10,7 +10,7 @@ int main() {
 	// show suit icons
 	SetConsoleOutputCP(CP_UTF8);
 
-	int choice;
+	char choice;
 
 	do {
 		system("cls");
@@ -23,38 +23,34 @@ int main() {
 		cin >> choice;
 
 		switch (choice) {
-		case 1: {
+		case '1': {
 			system("cls");
 			Game game;
 			game.startGame();
 			break;
 		}
-		case 2:
+		case '2':
 			system("cls");
-			//rules
+			cout << "===== How to Play =====\n";
+			cout << "Play 3 cards each round and defeat the Joker within the given rounds.\n";
+			cout << "Each played card has its own base chips.\n";
+			cout << "\n===== Hand Types =====\n";
+			cout << "High Card: 10 Chips × 1.5\n";
+			cout << "Pair: 15 Chips × 2\n";
+			cout << "Flush: 10 Chips x 2\n";
+			cout << "Big Three: 30 Chips × 3 (instantly breaks Joker's Shield)\n";
+			system("pause");
 			break;
-		case 3:
-			//quit
+		case '3':
 			break;
 		default:
 			cout << "\nInvalid Choice!\n";
+			system("pause");
 			break;
 		}
 	} while (choice != 3);
-	
-	//hand.playHand();
 
-	//Score score;
-	//score.calculateTotalChips(hand.getPlayedCards());
-	//score.displayScore(hand.getPlayedCards());
-
-	//cout << "\n\n";
-	//for (int c = 0; c < 3; c++) {
-	//	hand.addCard(deck.drawCard());
-	//}
-	//hand.sortHand();
-	//hand.displayHand();
-	//cout << "Remaining Cards: " << deck.remainingCards() << "/52\n";
+	exit(0);
 	
 	return 0;
 }

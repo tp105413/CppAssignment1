@@ -37,7 +37,15 @@ void Hand::playHand() {
 
 	for (int i = 0;i < 3; i++) {
 		std::cout << "Choose card " << i + 1 << ": ";
-		std::cin >> choice;
+
+		// prevent infinite loop when invalid input happens
+		if (!(std::cin >> choice)) {
+			std::cin.clear();
+			std::cin.ignore(1000, '\n');
+			std::cout << "Please enter a number!\n";
+			i--;
+			continue;
+		}
 
 		if (choice < 1 || choice > hand.size()) {
 			std::cout << "Invalid card!\n";
@@ -65,8 +73,8 @@ void Hand::playHand() {
 		playedCards.push_back(hand[choice - 1]);
 	}
 
-	std::cout << "\nPlaying cards: ";
-
+	system("cls");
+	std::cout << "Playing cards: ";
 	for (int index : selectCards) {
 		hand[index].play();
 	}
@@ -76,6 +84,8 @@ void Hand::playHand() {
 	for (int index : selectCards) {
 		hand.erase(hand.begin() + index);
 	}
+
+	handRemaining--;
 }
 
 std::vector<BaseCard> Hand::getPlayedCards() const {
@@ -83,5 +93,10 @@ std::vector<BaseCard> Hand::getPlayedCards() const {
 }
 
 void Hand::handReset() {
+	handRemaining = 3;
 	hand.clear();
+}
+
+int Hand::getRemainingHands() {
+	return handRemaining;
 }

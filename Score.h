@@ -20,4 +20,6 @@ private:
 public:
 	void calculateTotalChips(const std::vector<BaseCard>& cards);
 	void displayScore(const std::vector<BaseCard>& cards) const;
+	int getTotalChips() const;
+	std::string getHandType();
 };

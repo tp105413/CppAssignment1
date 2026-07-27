@@ -57,11 +57,20 @@ void Score::displayScore(const std::vector<BaseCard>& cards) const {
 		std::cout << cards[i].getChips();
 
 		if (i < cards.size() - 1) {
-			std::cout << " + ";
+			std::cout << "+";
 		}
 	}
 	std::cout << " = " << cardChips;
 
 	std::cout << "\nBase Chips: " << baseChips;
 	std::cout << "\nMultiplier: " << multiplier;
+	std::cout << "\nTotal Chips: " << "(" << baseChips << "+" << cardChips << ")" << "*" << multiplier << " = " << totalChips << "\n";
+}
+
+int Score::getTotalChips() const {
+	return totalChips;
+}
+
+std::string Score::getHandType() {
+	return handTypes;
 }
