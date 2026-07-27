@@ -42,7 +42,7 @@ void Game::playRound() {
 		joker.displayJoker();
 		hand.sortHand();
 		hand.displayHand();
-		std::cout << "Remaining Cards: " << deck.remainingCards() << "/52\n";
+		std::cout << "\nRemaining Cards: " << deck.remainingCards() << "/52\n";
 		std::cout << "Remaining Hands: " << hand.getRemainingHands() << "/3\n";
 
 		hand.playHand();
@@ -56,7 +56,7 @@ void Game::playRound() {
 		for (int c = 0; c < 3; c++) {
 			hand.addCard(deck.drawCard());
 		}
-	} while (hand.getRemainingHands() > 0 && joker.getHp() > 0);
+	} while (hand.getRemainingHands() > 0 && !joker.isDead());
 }
 
 void Game::nextLevel() {

@@ -1,4 +1,5 @@
 #include <iostream>
+#include <string>
 
 #include "Joker.h"
 
@@ -45,9 +46,10 @@ bool Joker::isDead() const {
 }
 
 void Joker::displayJoker() const {
-	std::cout << "(Lv." << level << ") " << "Joker " << name << "\n";
+	std::cout << std::string(20, '=');
+	std::cout << "\n(Lv." << level << ") " << "Joker " << name << "\n";
 	std::cout << "Shield: " << shield << "/" << maxShield << "\n";
-	std::cout << "HP: " << hp << "/" << maxHp << "\n";
+	std::cout << "HP: " << hp << "/" << maxHp << "\n\n";
 }
 
 int Joker::getHp() const {
@@ -66,7 +68,7 @@ void Joker::spawnJoker() {
 	case 2:
 		name = "C";
 		maxHp = 50;
-		maxShield = 50 & level;
+		maxShield = 50 * level;
 		break;
 	case 3:
 		name = "D";

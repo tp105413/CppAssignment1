@@ -31,14 +31,14 @@ int main() {
 		}
 		case '2':
 			system("cls");
-			cout << "===== How to Play =====\n";
-			cout << "Play 3 cards each round and defeat the Joker within the given rounds.\n";
+			cout << string(20, '=') << " How to Play " << string(20, '=');
+			cout << "\nPlay 3 cards each round and defeat the Joker within the given rounds.\n";
 			cout << "Each played card has its own base chips.\n";
-			cout << "\n===== Hand Types =====\n";
-			cout << "High Card: 10 Chips × 1.5\n";
+			cout << "\n" << string(20, '=') << "Hand Types " << string(20, '=');
+			cout << "\nHigh Card: 10 Chips × 1.5\n";
 			cout << "Pair: 15 Chips × 2\n";
 			cout << "Flush: 10 Chips x 2\n";
-			cout << "Big Three: 30 Chips × 3 (instantly breaks Joker's Shield)\n";
+			cout << "Big Three: 30 Chips × 3 (instantly breaks Joker's Shield)\n\n";
 			system("pause");
 			break;
 		case '3':
@@ -48,7 +48,7 @@ int main() {
 			system("pause");
 			break;
 		}
-	} while (choice != 3);
+	} while (choice != '3');
 
 	exit(0);
 	
