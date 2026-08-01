@@ -1,10 +1,29 @@
 #include <iostream>
+#include <algorithm>
 
 #include "Score.h"
 
 bool Score::isBigThree(const std::vector<BaseCard>& cards) {
 	return cards[0].getRank() == cards[1].getRank() &&
 		cards[1].getRank() == cards[2].getRank();
+}
+
+bool Score::isStraightFlush(const std::vector<BaseCard>& cards) {
+	return isStraight(cards) && isFlush(cards);
+}
+
+bool Score::isStraight(const std::vector<BaseCard>& cards) {
+	std::vector<BaseCard> temp = cards;
+
+	std::sort(temp.begin(), temp.end(), [](const BaseCard& a, const BaseCard& b) {
+		return static_cast<int>(a.getRank()) < static_cast<int>(b.getRank());
+		});
+
+	int r1 = static_cast<int>(temp[0].getRank());
+	int r2 = static_cast<int>(temp[1].getRank());
+	int r3 = static_cast<int>(temp[2].getRank());
+
+	return r2 == r1 + 1 && r3 == r2 + 1;
 }
 
 bool Score::isPair(const std::vector<BaseCard>& cards) {
@@ -24,6 +43,16 @@ void Score::calculateTotalChips(const std::vector<BaseCard>& cards) {
 		handTypes = "Big Three";
 		baseChips = 30;
 		multiplier = 3;
+	}
+	else if (isStraightFlush(cards)) {
+		handTypes = "Straight Flush";
+		baseChips = 45;
+		multiplier = 4;
+	}
+	else if (isStraight(cards)) {
+		handTypes = "Straight";
+		baseChips = 20;
+		multiplier = 2;
 	}
 	else if (isPair(cards)) {
 		handTypes = "Pair";

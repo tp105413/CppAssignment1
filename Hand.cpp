@@ -88,15 +88,78 @@ void Hand::playHand() {
 	handRemaining--;
 }
 
+int Hand::discardHand() {
+	int choice;
+	std::vector<int> selectCards;
+	int discardCount = 0;
+
+	std::cout << "\nDiscard up to 3 cards! Select 0 to stop discard!\n";
+	for (int i = 0; i < 3; i++) {
+		std::cout << "Choose Card " << i + 1 << ": ";
+
+		if (!(std::cin >> choice)) {
+			std::cin.clear();
+			std::cin.ignore(1000, '\n');
+			std::cout << "Please enter a number!\n";
+			i--;
+			continue;
+		}
+
+		if (choice == 0) {
+			break;
+		}
+
+		if (choice < 1 || choice > hand.size()) {
+			std::cout << "Invalid card!\n";
+			i--;
+			continue;
+		}
+
+		bool selectedCheck = false;
+
+		for (int selected : selectCards) {
+			if (selected == choice - 1) {
+				selectedCheck = true;
+				break;
+			}
+		}
+
+		if (selectedCheck) {
+			std::cout << "Card is already selected!\n";
+			i--;
+			continue;
+		}
+
+		selectCards.push_back(choice - 1);
+		discardCount++;
+	}
+
+	std::sort(selectCards.rbegin(), selectCards.rend());
+	for (int index : selectCards) {
+		hand.erase(hand.begin() + index);
+	}
+
+	if (discardCount > 0) {
+		discardRemaining--;
+	}
+
+	return discardCount;
+}
+
 std::vector<BaseCard> Hand::getPlayedCards() const {
 	return playedCards;
 }
 
 void Hand::handReset() {
 	handRemaining = 3;
+	discardRemaining = 2;
 	hand.clear();
 }
 
-int Hand::getRemainingHands() {
+int Hand::getRemainingHands() const {
 	return handRemaining;
+}
+
+int Hand::getRemainingDiscards() const {
+	return discardRemaining;
 }

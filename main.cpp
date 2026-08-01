@@ -10,7 +10,7 @@ int main() {
 	// show suit icons
 	SetConsoleOutputCP(CP_UTF8);
 
-	char choice;
+	int choice;
 
 	do {
 		system("cls");
@@ -20,16 +20,23 @@ int main() {
 		cout << "3. Quit\n";
 		cout << "\n" << string(21, '=') << "\n";
 		cout << "Choose: ";
-		cin >> choice;
+		
+		if (!(std::cin >> choice)) {
+			std::cin.clear();
+			std::cin.ignore(1000, '\n');
+			std::cout << "Please enter a number!\n";
+			system("pause");
+			continue;
+		}
 
 		switch (choice) {
-		case '1': {
+		case 1: {
 			system("cls");
 			Game game;
 			game.startGame();
 			break;
 		}
-		case '2':
+		case 2:
 			system("cls");
 			cout << string(20, '=') << " How to Play " << string(20, '=');
 			cout << "\nPlay 3 cards each round and defeat the Joker within the given rounds.\n";
@@ -38,10 +45,12 @@ int main() {
 			cout << "\nHigh Card: 10 Chips × 1.5\n";
 			cout << "Pair: 15 Chips × 2\n";
 			cout << "Flush: 10 Chips x 2\n";
+			cout << "Straight: 20 Chips x 2\n";
+			cout << "Straight Flush: 45 Chips x 4\n";
 			cout << "Big Three: 30 Chips × 3 (instantly breaks Joker's Shield)\n\n";
 			system("pause");
 			break;
-		case '3':
+		case 3:
 			break;
 		default:
 			cout << "\nInvalid Choice!\n";

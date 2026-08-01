@@ -14,6 +14,8 @@ private:
 	std::string handTypes;
 
 	bool isBigThree(const std::vector<BaseCard>& cards);
+	bool isStraightFlush(const std::vector<BaseCard>& cards);
+	bool isStraight(const std::vector<BaseCard>& cards);
 	bool isPair(const std::vector<BaseCard>& cards);
 	bool isFlush(const std::vector<BaseCard>& cards);
 

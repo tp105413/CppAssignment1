@@ -17,24 +17,24 @@ void Joker::takeDamage(int damage, std::string handType) {
 	// instant break shield if Big Three
 	if(handType == "Big Three" && shield > 0){
 		shield = 0;
-		std::cout << "Break Shield! ";
+		std::cout << "\nBreak Shield! ";
 	}
 
 	if (shield > 0) {
 		if (damage >= shield) {
 			damage -= shield;
 			shield = 0;
-			std::cout << "Break Shield! ";
+			std::cout << "\nBreak Shield! ";
 		}
 		else {
 			shield -= damage;
-			std::cout << "Dealing " << damage << " to Shield!\n";
+			std::cout << "\nDealing " << damage << " to Shield!";
 			damage = 0;
 		}
 	}
 
 	hp -= damage;
-	std::cout << "Dealing " << damage << " damage to Joker!";
+	std::cout << "\nDealing " << damage << " damage to Joker!";
 
 	if (hp < 0) {
 		hp = 0;
@@ -46,7 +46,7 @@ bool Joker::isDead() const {
 }
 
 void Joker::displayJoker() const {
-	std::cout << std::string(20, '=');
+	std::cout << std::string(40, '=');
 	std::cout << "\n(Lv." << level << ") " << "Joker " << name << "\n";
 	std::cout << "Shield: " << shield << "/" << maxShield << "\n";
 	std::cout << "HP: " << hp << "/" << maxHp << "\n\n";
