@@ -38,7 +38,7 @@ bool Score::isFlush(const std::vector<BaseCard>& cards) {
 		cards[0].getSuit() == cards[2].getSuit();
 }
 
-void Score::calculateTotalChips(const std::vector<BaseCard>& cards) {
+void Score::calculateTotalChips(const std::vector<BaseCard>& cards, std::string abilityName) {
 	if (isBigThree(cards)) {
 		handTypes = "Big Three";
 		baseChips = 30;
@@ -74,6 +74,23 @@ void Score::calculateTotalChips(const std::vector<BaseCard>& cards) {
 
 	for (const BaseCard& card : cards) {
 		cardChips += card.getChips();
+	}
+
+	if (abilityName != "") {
+		if (abilityName == "Big 3") {
+			handTypes = "Big Three";
+			baseChips = 30;
+			multiplier = 3;
+		}
+		else if (abilityName == "Power Chips") {
+			baseChips += 20;
+		}
+		else if (abilityName == "Power Multiplier") {
+			multiplier += 1;
+		}
+		else if (abilityName == "Shield Breaker") {
+			handTypes = "Shield Breaker";
+		}
 	}
 
 	totalChips = static_cast<int>((baseChips + cardChips) * multiplier);

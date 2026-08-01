@@ -7,6 +7,10 @@ void Hand::addCard(BaseCard card) {
 	hand.push_back(card);
 }
 
+void Hand::addAbility(AbilityCard ability) {
+	playerAbilities.push_back(ability);
+}
+
 // arrange hand by comparing rank then suit
 void Hand::sortHand() {
 	std::sort(hand.begin(), hand.end(), [](const BaseCard& a, const BaseCard& b) {
@@ -23,6 +27,17 @@ void Hand::displayHand() {
 
 		if ((c + 1) % 5 == 0) {
 			std::cout << "\n";
+		}
+	}
+
+	std::cout << "\nAbility Card: \n";
+	if (playerAbilities.empty()) {
+		std::cout << "No ability card\n";
+	}
+	else {
+		for (int a = 0; a < playerAbilities.size(); a++) {
+			std::cout << a + 1;
+			playerAbilities[a].play();
 		}
 	}
 }
@@ -73,12 +88,6 @@ void Hand::playHand() {
 		playedCards.push_back(hand[choice - 1]);
 	}
 
-	system("cls");
-	std::cout << "Playing cards: ";
-	for (int index : selectCards) {
-		hand[index].play();
-	}
-
 	// sort the selected cards descending
 	std::sort(selectCards.rbegin(), selectCards.rend());
 	for (int index : selectCards) {
@@ -86,6 +95,21 @@ void Hand::playHand() {
 	}
 
 	handRemaining--;
+}
+
+// display played cards and ability
+void Hand::displayHandPlayed(std::string& abilityName) {
+
+	system("cls");
+	
+	if (abilityName != "") {
+		std::cout << "Use " << abilityName << " Ability!\n";
+	}
+
+	std::cout << "Playing cards: ";
+	for (BaseCard& card : playedCards) {
+		card.play();
+	}
 }
 
 int Hand::discardHand() {
@@ -162,4 +186,16 @@ int Hand::getRemainingHands() const {
 
 int Hand::getRemainingDiscards() const {
 	return discardRemaining;
+}
+
+bool Hand::hasAbility() {
+	return !playerAbilities.empty();
+}
+
+AbilityCard Hand::getAbility(int index) const {
+	return playerAbilities[index];
+}
+
+void Hand::removeAbilityCard(int index) {
+	playerAbilities.erase(playerAbilities.begin() + index);
 }

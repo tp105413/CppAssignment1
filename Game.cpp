@@ -38,6 +38,8 @@ void Game::playRound() {
 		hand.addCard(deck.drawCard());
 	}
 
+	hand.addAbility(deck.drawAbilityCard());
+
 	do {
 		joker.displayJoker();
 		hand.sortHand();
@@ -46,22 +48,46 @@ void Game::playRound() {
 		std::cout << "Remaining Hands: " << hand.getRemainingHands() << "/3\t";
 		std::cout << "Remaining Discards: " << hand.getRemainingDiscards() << "/2\n";
 
-		int choose;
+		int action = 0;
 		do {
 			std::cout << "\n1. Play\t2. Discard\nChoose: ";
 			
-			if (!(std::cin >> choose)) {
+			if (!(std::cin >> action)) {
 				std::cin.clear();
 				std::cin.ignore(1000, '\n');
 				std::cout << "Please enter a number!\n";
 				continue;
 			}
 
-			switch (choose) {
+			switch (action) {
 			case 1:
 			{
+				std::string abilityName = "";
+
 				hand.playHand();
-				score.calculateTotalChips(hand.getPlayedCards());
+
+				int choose;
+				if (hand.hasAbility()) {
+
+					std::cout << "\nUse Ability Card (0 to not use): ";
+					if (!(std::cin >> choose)) {
+						std::cin.clear();
+						std::cin.ignore(1000, '\n');
+						choose = 0;
+					}
+				}
+				else {
+					choose = 0;
+				}
+
+				if (choose > 0) {
+					AbilityCard ability = hand.getAbility(choose - 1);
+					abilityName = ability.getName();
+					hand.removeAbilityCard(choose - 1);
+				}
+
+				hand.displayHandPlayed(abilityName);
+				score.calculateTotalChips(hand.getPlayedCards(), abilityName);
 				score.displayScore(hand.getPlayedCards());
 				joker.takeDamage(score.getTotalChips(), score.getHandType());
 
@@ -92,7 +118,7 @@ void Game::playRound() {
 				std::cout << "Invalid Choice!\n";
 				break;
 			}
-		} while (choose != 1 && choose != 2);
+		} while (action != 1 && action != 2);
 
 	} while (hand.getRemainingHands() > 0 && !joker.isDead());
 }

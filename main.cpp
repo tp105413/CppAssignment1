@@ -41,6 +41,7 @@ int main() {
 			cout << string(20, '=') << " How to Play " << string(20, '=');
 			cout << "\nPlay 3 cards each round and defeat the Joker within the given rounds.\n";
 			cout << "Each played card has its own base chips.\n";
+			cout << "Every round will get an Ability card.\n";
 			cout << "\n" << string(20, '=') << "Hand Types " << string(20, '=');
 			cout << "\nHigh Card: 10 Chips × 1.5\n";
 			cout << "Pair: 15 Chips × 2\n";

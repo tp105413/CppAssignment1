@@ -1,5 +1,7 @@
 #include <random>
 #include <algorithm>
+#include <cstdlib>
+#include <ctime>
 
 #include "Deck.h"
 
@@ -12,6 +14,9 @@ Deck::Deck() {
 			);
 		}
 	}
+
+	// create ability library store all abilities
+	createAbilityDeck();
 }
 
 // shuffle created deck in vector
@@ -40,4 +45,17 @@ void Deck::deckReset() {
 			);
 		}
 	}
+}
+
+// add all abilities here
+void Deck::createAbilityDeck() {
+	abilities.push_back(AbilityCard("Big 3", "Any 3 cards count as Big Three"));
+	abilities.push_back(AbilityCard("Power Chips", "Base Chips +20"));
+	abilities.push_back(AbilityCard("Power Multiplier", "Base Multiplier +1"));
+	abilities.push_back(AbilityCard("Shield Breaker", "Instantly break Joker's Shield"));
+}
+
+AbilityCard Deck::drawAbilityCard() {
+	int random = rand() % 4 + 1;
+	return abilities[random];
 }

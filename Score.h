@@ -20,7 +20,7 @@ private:
 	bool isFlush(const std::vector<BaseCard>& cards);
 
 public:
-	void calculateTotalChips(const std::vector<BaseCard>& cards);
+	void calculateTotalChips(const std::vector<BaseCard>& cards, std::string abilityName);
 	void displayScore(const std::vector<BaseCard>& cards) const;
 	int getTotalChips() const;
 	std::string getHandType();
