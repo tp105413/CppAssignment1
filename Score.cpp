@@ -91,6 +91,23 @@ void Score::calculateTotalChips(const std::vector<BaseCard>& cards, std::string 
 		else if (abilityName == "Shield Breaker") {
 			handTypes = "Shield Breaker";
 		}
+		else if (abilityName == "Flushy") {
+			if (handTypes == "Straight" || handTypes == "Straight Flush") {
+				handTypes = "Straight Flush";
+				baseChips = 45;
+				multiplier = 4;
+			}
+			else if (handTypes == "Big Three") {
+				handTypes = "Flush Three";
+				baseChips = 50;
+				multiplier = 5;
+			}
+			else {
+				handTypes = "Flush";
+				baseChips = 10;
+				multiplier = 2;
+			}
+		}
 	}
 
 	totalChips = static_cast<int>((baseChips + cardChips) * multiplier);

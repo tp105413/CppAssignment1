@@ -29,4 +29,5 @@ public:
 	bool hasAbility();
 	AbilityCard getAbility(int index) const;
 	void removeAbilityCard(int index);
+	size_t getPlayerAbilitySize();
 };

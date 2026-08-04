@@ -15,7 +15,7 @@ Joker::Joker(std::string n, int h, int s, int lv) {
 void Joker::takeDamage(int damage, std::string handType) {
 
 	// instant break shield if Big Three
-	if (handType == "Big Three" && shield > 0 || handType == "Shield Breaker" && shield > 0) {
+	if ((handType == "Big Three" && shield > 0) || (handType == "Shield Breaker" && shield > 0) || (handType == "Flush Three" && shield > 0)) {
 		shield = 0;
 		std::cout << "\nBreak Shield! ";
 	}
@@ -62,13 +62,13 @@ void Joker::spawnJoker() {
 	switch (randomJoker) {
 	case 1:
 		name = "B";
-		maxHp = 50 * level;
+		maxHp = (50 * level) + 50;
 		maxShield = 50;
 		break;
 	case 2:
 		name = "C";
 		maxHp = 50;
-		maxShield = 50 * level;
+		maxShield = (50 * level) + 50;
 		break;
 	case 3:
 		name = "D";

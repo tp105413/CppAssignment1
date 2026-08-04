@@ -199,3 +199,7 @@ AbilityCard Hand::getAbility(int index) const {
 void Hand::removeAbilityCard(int index) {
 	playerAbilities.erase(playerAbilities.begin() + index);
 }
+
+size_t Hand::getPlayerAbilitySize() {
+	return playerAbilities.size();
+}

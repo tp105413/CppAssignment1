@@ -48,7 +48,8 @@ int main() {
 			cout << "Flush: 10 Chips x 2\n";
 			cout << "Straight: 20 Chips x 2\n";
 			cout << "Straight Flush: 45 Chips x 4\n";
-			cout << "Big Three: 30 Chips × 3 (instantly breaks Joker's Shield)\n\n";
+			cout << "Big Three: 30 Chips × 3 (instantly breaks Joker's Shield)\n";
+			cout << "Flush Three: 50 Chips x 5 (instantly breaks Joker's Shield)\n\n";
 			system("pause");
 			break;
 		case 3:

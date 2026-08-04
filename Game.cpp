@@ -80,10 +80,13 @@ void Game::playRound() {
 					choose = 0;
 				}
 
-				if (choose > 0) {
+				if (choose > 0 && choose < hand.getPlayerAbilitySize()) {
 					AbilityCard ability = hand.getAbility(choose - 1);
 					abilityName = ability.getName();
 					hand.removeAbilityCard(choose - 1);
+				}
+				else {
+					choose = 0;
 				}
 
 				hand.displayHandPlayed(abilityName);

@@ -53,9 +53,10 @@ void Deck::createAbilityDeck() {
 	abilities.push_back(AbilityCard("Power Chips", "Base Chips +20"));
 	abilities.push_back(AbilityCard("Power Multiplier", "Base Multiplier +1"));
 	abilities.push_back(AbilityCard("Shield Breaker", "Instantly break Joker's Shield"));
+	abilities.push_back(AbilityCard("Flushy", "All played cards become same suit"));
 }
 
 AbilityCard Deck::drawAbilityCard() {
-	int random = rand() % 4 + 1;
+	int random = (rand() % 5) - 1;
 	return abilities[random];
 }
