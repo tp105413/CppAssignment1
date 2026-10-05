@@ -62,6 +62,8 @@ void Hand::playHand() {
 			continue;
 		}
 
+		std::cin.ignore(1000, '\n');
+
 		if (choice < 1 || choice > hand.size()) {
 			std::cout << "Invalid card!\n";
 			i--;
@@ -128,6 +130,8 @@ int Hand::discardHand() {
 			i--;
 			continue;
 		}
+
+		std::cin.ignore(1000, '\n');
 
 		if (choice == 0) {
 			break;

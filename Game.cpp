@@ -59,6 +59,8 @@ void Game::playRound() {
 				continue;
 			}
 
+			std::cin.ignore(1000, '\n');
+
 			switch (action) {
 			case 1:
 			{
@@ -79,6 +81,8 @@ void Game::playRound() {
 				else {
 					choose = 0;
 				}
+
+				std::cin.ignore(1000, '\n');
 
 				if (choose > 0 && choose < hand.getPlayerAbilitySize()) {
 					AbilityCard ability = hand.getAbility(choose - 1);

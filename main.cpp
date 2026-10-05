@@ -29,6 +29,8 @@ int main() {
 			continue;
 		}
 
+		std::cin.ignore(1000, '\n');
+
 		switch (choice) {
 		case 1: {
 			system("cls");
@@ -59,7 +61,7 @@ int main() {
 			system("pause");
 			break;
 		}
-	} while (choice != '3');
+	} while (choice != 3);
 
 	exit(0);
 	
