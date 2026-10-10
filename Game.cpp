@@ -76,15 +76,14 @@ void Game::playRound() {
 						std::cin.clear();
 						std::cin.ignore(1000, '\n');
 						choose = 0;
+						std::cin.ignore(1000, '\n');
 					}
 				}
 				else {
 					choose = 0;
 				}
 
-				std::cin.ignore(1000, '\n');
-
-				if (choose > 0 && choose < hand.getPlayerAbilitySize()) {
+				if (choose > 0 && choose <= hand.getPlayerAbilitySize()) {
 					AbilityCard ability = hand.getAbility(choose - 1);
 					abilityName = ability.getName();
 					hand.removeAbilityCard(choose - 1);
